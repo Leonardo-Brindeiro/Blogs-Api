@@ -30,7 +30,9 @@ module.exports = {
         // Informa que o campo é uma Foreign Key (Chave estrangeira)
       
       },
-    });
+   
+    }, {timestamps: false});
+
   },
 
   down: async (queryInterface, _Sequelize) => {
