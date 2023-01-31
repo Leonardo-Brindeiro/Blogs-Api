@@ -16,15 +16,6 @@ const generateToken = ({ email, id }) =>
         error.status = 400;
         throw error;
     }
-
-try {
-    const decryptedData = await jwt.verify(token, JWT_SECRET);
-    return decryptedData;
-} catch (err) {
-    const error = new Error('jwt malformed');
-    error.status = 400;
-    throw Error;
-}
 };
 
 module.exports = {
