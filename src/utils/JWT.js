@@ -13,6 +13,21 @@ const jwtConfig = {
 const generateToken = ({ email, id }) =>
  jwt.sign({ email, id }, jwtSecret, jwtConfig);
 
-module.exports = {
+ const authenticToken = async (token) => {
+    if (!token) {
+      return { type: 'EMPTY_TOKEN', message: 'Token not found' };
+    }
+  
+    try {
+      const decriptDados = await jwt.verify(token, jwtSecret);
+      return decriptDados;
+    } catch (error) {
+      return { type: 'INVALID_TOKEN', message: 'Expired or invalid token' };
+    }
+};
+
+ module.exports = {
+
     generateToken,
+    authenticToken,
  };
