@@ -25,10 +25,7 @@ module.exports = {
       image: {
         type: Sequelize.STRING,
         allowNull: false,
-        // Configuram o que deve acontecer ao atualizar ou excluir um usuário
-        
-        // Informa que o campo é uma Foreign Key (Chave estrangeira)
-      
+             
       },
    
     }, {timestamps: false});

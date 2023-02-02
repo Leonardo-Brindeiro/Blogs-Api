@@ -1,5 +1,7 @@
 const loginService = require('../service/login.service');
 
+// ajuda do meu amigo rafael pacheco e gustavo t
+
 const auth = async (req, res) => {
   const { email, password } = req.body;
  if (!email || !password) {
@@ -13,12 +15,8 @@ const auth = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    try {
     const users = await loginService.login(req.body);
     return res.status(200).json(users);
-  } catch (e) {
-    res.status(400).json({ login });
-  }
 };
 
 module.exports = { login, auth };

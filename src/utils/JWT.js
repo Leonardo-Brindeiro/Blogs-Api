@@ -1,6 +1,9 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'suaSenhaSecreta';
+// ajuda de dani gazarini 
+
+const jwtSecret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 
 const jwtConfig = {
     expiresIn: '30m',
@@ -8,17 +11,8 @@ const jwtConfig = {
 };
 
 const generateToken = ({ email, id }) =>
- jwt.sign({ email, id }, JWT_SECRET, jwtConfig);
-
- const authenticateToken = async (token) => {
-    if (!token) {
-        const error = new Error('missin auth token');
-        error.status = 400;
-        throw error;
-    }
-};
+ jwt.sign({ email, id }, jwtSecret, jwtConfig);
 
 module.exports = {
     generateToken,
-    authenticateToken,
-};
+ };
