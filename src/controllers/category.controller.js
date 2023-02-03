@@ -7,4 +7,12 @@ const createCategory = async (req, res) => {
     return res.status(201).json(message);
      };
 
-     module.exports = { createCategory };
+     const allGetCategory = async (_req, res) => {
+        const getCat = await categoryService.allGetCategory();
+        if (getCat) {
+    return res.status(200).json(getCat);
+        }
+        return res.status(500).json({ message: '"name" is required' });
+  };
+
+     module.exports = { createCategory, allGetCategory };
