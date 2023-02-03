@@ -13,7 +13,7 @@ const modelCategory = (sequelize, DataTypes) => {
         
        },
        {
-        // tableName: 'blog' ,
+        tableName: 'posts_categories' ,
         underscored: true,
        });
 
@@ -23,12 +23,14 @@ const modelCategory = (sequelize, DataTypes) => {
        postcatTable.associate = (models) => {
         models.Category.belongsToMany(models.BlogPost, {
             as: 'posts',
-            foreingKey: 'categoryId', 
+            foreignKey: 'categoryId',
+            otherKey: 'postId',  
             through: postcatTable,
         });
           models.BlogPost.belongsToMany(models.Category,{
-            as: 'category',
-            foreingKey: 'postId', 
+            as: 'categories',
+            foreignKey: 'postId',
+            otherKey: 'categoryId', 
             through: postcatTable,
           });
       };
