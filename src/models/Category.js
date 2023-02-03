@@ -9,8 +9,9 @@ const model = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
      },
      {
-      // tableName: 'blog' ,
+      tableName: 'categories' ,
       underscored: true,
+      timestamps: false,
      });
      return modelCategory;
 };

@@ -9,4 +9,16 @@ const authToken = async (req, res, next) => {
   return next();
 };
 
-module.exports = authToken;
+const validName = async (req, res, next) => {
+  const { name } = await req.body;
+  if (!name) {
+ return res.status(400).json({ message: '"name" is required' });
+  }
+  next();
+};
+
+module.exports = { 
+  authToken,
+  validName,
+
+};
